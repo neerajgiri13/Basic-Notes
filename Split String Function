@@ -1,0 +1,33 @@
+
+
+/* SELECT * FROM [fnSplitString]('abc,ada,adad',',' ) */
+
+ALTER FUNCTION [dbo].[fnSplitString](@String varchar(8000), @Delimiter char(1))       
+RETURNS @temptable TABLE (id int,items varchar(8000))       
+AS       
+BEGIN       
+    DECLARE @idx int       
+    DECLARE @slice VARCHAR(8000)       
+	  DECLARE @cnt int 
+	  SELECT @cnt = 0
+    select @idx = 1 
+	
+IF LEN(@String)<1 or @String IS NULL  RETURN       
+    WHILE @idx!= 0       
+    BEGIN       
+        SET @idx = CHARINDEX(@Delimiter,@String)       
+        IF @idx!=0       
+            SET @slice = LTRIM(RTRIM(LEFT(@String,@idx - 1)))
+        ELSE       
+            SET @slice = LTRIM(RTRIM(@String))
+
+        IF(LEN(@slice)>0)
+		BEGIN
+			SET @cnt = @cnt + 1   
+            INSERT INTO @temptable(id, Items) VALUES(@cnt,@slice)       
+		END
+        SET @String = RIGHT(@String,LEN(@String) - @idx)       
+        IF LEN(@String) = 0 break       
+    END   
+RETURN      
+END
