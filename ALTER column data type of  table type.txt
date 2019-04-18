@@ -1,0 +1,18 @@
+ALTER TYPE mt_portfolio.tbl_type_trans_details ALTER ATTRIBUTE sell_qty SET DATA TYPE numeric(24,4) CASCADE;
+
+ALTER TYPE mt_portfolio.tbl_type_temp_trans ALTER ATTRIBUTE net_qty SET DATA TYPE numeric(24,4) CASCADE;
+
+
+
+ADD new column
+
+ALTER TYPE mt_portfolio.tbl_type_ko_out --done
+ADD ATTRIBUTE product_code character varying(100) CASCADE,
+ADD ATTRIBUTE book_type character varying(100) CASCADE; 
+
+
+
+
+ -- ALTER table mt_portal.customer_application_audit ALTER COLUMN date_of_birth SET DATA TYPE text ;
+ -- ALTER table mt_portal.customer_application ALTER COLUMN Aadhaar_Number SET DATA TYPE character varying(250) ;
+--  ALTER table mt_portal.customer_application ALTER COLUMN pan SET DATA TYPE character varying(250) ;
