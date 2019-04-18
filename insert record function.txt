@@ -1,0 +1,41 @@
+CREATE OR REPLACE FUNCTION Sp_insert_cdsl_master(
+    p_bank_id    integer, 
+    p_micr_code  varchar(200),
+    p_ifs_code varchar(200),
+    p_bank_name varchar(200),
+    p_bank_address_1 varchar(1000),
+    p_bank_address_2 varchar(1000),
+    p_bank_address_3 varchar(1000),
+    p_bank_city varchar(100),
+    p_bank_state varchar(100),
+    p_bank_country  varchar(100),
+    p_bank_zip_code varchar(100),
+    p_bank_phone_1 varchar(100),
+    p_bank_phone_2 varchar(100),
+    p_unique_id varchar(100),
+    p_bank_email varchar(100),
+    p_bank_contact_name varchar(100),
+    p_bank_contact_designation varchar(100)
+)
+  RETURNS void AS
+  $BODY$
+      BEGIN
+        INSERT INTO cdsl_bankmaster(bank_id,micr_code,ifs_code,bank_name,bank_address_1,bank_address_2
+                                   ,bank_address_3,bank_city,bank_state,bank_country,bank_zip_code,bank_phone_1
+                                  ,bank_phone_2,unique_id,bank_email,bank_contact_name,bank_contact_designation )
+        VALUES(p_bank_id,p_micr_code,p_ifs_code,p_bank_name,p_bank_address_1,p_bank_address_2
+                                   ,p_bank_address_3,p_bank_city,p_bank_state,p_bank_country,p_bank_zip_code,p_bank_phone_1
+                                  ,p_bank_phone_2,p_unique_id,p_bank_email,p_bank_contact_name,p_bank_contact_designation );
+      END;
+  $BODY$
+  LANGUAGE 'plpgsql' VOLATILE
+  COST 100;
+  
+  
+  
+
+  
+
+select * from cdsl_bankmaster(1,'54637','gjhb674684','gfghff','fdgg','fgdsf','dfgdg','Mumbai',
+                              'Maharastara','India','5677','786574358',
+                              '4678453','43','fhfgfgdhf@hgf','46735738','hdhggy');

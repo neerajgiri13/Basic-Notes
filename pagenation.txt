@@ -1,0 +1,7 @@
+declare p_pagenumber INTEGER = 1;
+         p_pagesize INTEGER = 1
+select * 
+from (
+select ROW_NUMBER() over(order by upd_time desc) RNO,* from public.emp_test
+)a
+WHERE   A.RNO > ((p_pagenumber - 1) * p_pagesize) AND A.RNO <= (p_pagenumber * p_pagesize)

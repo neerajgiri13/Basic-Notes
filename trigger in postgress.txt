@@ -1,0 +1,27 @@
+CREATE TRIGGER trigger_test BEFORE UPDATE
+   ON emp_test
+   FOR EACH ROW 
+   EXECUTE PROCEDURE trigger_update();
+   
+   
+   
+ CREATE OR REPLACE FUNCTION trigger_update() RETURNS TRIGGER AS $example_table$
+   BEGIN
+      INSERT INTO check_update(EMP_ID, emp_name,emp_sal,emp_city)
+      VALUES(old.EMP_ID,old.emp_name,old.emp_sal,old.emp_city);
+      RETURN new;
+   END;
+$example_table$ LANGUAGE plpgsql;
+
+
+UPDATE public.emp_test
+SET emp_name = 'neeraj'
+WHERE emp_id = 1;
+
+SELECT * FROM emp_test
+SELECT * FROM check_update
+TRUNCATE TABLE check_update
+   
+   
+   
+   

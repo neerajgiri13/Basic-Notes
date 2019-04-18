@@ -1,0 +1,11 @@
+Driver=PostgreSQL;Server=192.168.101.169;Port=5432;Database=MASTERTRUST;UID=postgres;PWD=P@ssw0rd!!!
+Dsn=PostgreSQL30;server=192.168.101.169;port=5432;database=MASTERTRUST;uid=postgres;pwd=P@ssw0rd!!!
+
+
+Dsn=PostgreSQL30;server=192.168.101.169;port=5432;database=MASTERTRUST_EQ;uid=postgres;pwd=P@ssw0rd!!!
+
+P@ssw0rd!!!
+
+bi_bseindices_latestprices
+
+marketopen,exchange_start_time,exchange_end_time,marketdetails

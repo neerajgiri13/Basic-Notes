@@ -1,0 +1,24 @@
+CREATE OR REPLACE FUNCTION unnest(ANYARRAY) 
+ RETURNS SETOF ANYELEMENT
+ LANGUAGE SQL 
+ AS $$
+ SELECT $1[i] 
+ FROM generate_series(array_lower($1,1),array_upper($1,1)) i;
+ $$;
+
+    
+ -- SELECT * FROM unnest(string_to_array('foo,bar,bartz', ','));
+
+
+ -- To get all value with comma separated into one column
+
+ SELECT string_agg(emp_name, ',') FROM emp_test;
+
+
+-- To split one column into multiple column 
+
+select
+       split_part(name, ',', 1) col1
+      ,split_part(name, ',', 2) col2 
+      ,split_part(name, ',', 3) col3     
+from csvtostring_test;

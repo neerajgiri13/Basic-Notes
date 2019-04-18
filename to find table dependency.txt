@@ -1,0 +1,4 @@
+SELECT nspname,proname,prosrc FROM pg_proc 
+JOIN  pg_namespace nsp ON (pronamespace=nsp.oid) 
+WHERE prosrc LIKE '%feed_bseindices%'
+
